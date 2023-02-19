@@ -19,20 +19,24 @@ public:
         bool r=0;
         while(!q.empty()){
             int size=q.size();
-            vector<int>cur;
+            vector<int>cur(size);
             for(int i=0;i<size;i++ ){
+                int ind;
                 TreeNode* f=q.front();
                 q.pop();
-                cur.push_back(f->val);
                 if(f->left){
                     q.push(f->left);
                 }
                 if(f->right){
                     q.push(f->right);
                 }
-            }
-            if(r){
-                reverse(cur.begin(),cur.end());
+                if(r){
+                    ind=size-1-i;
+                }
+                else{
+                    ind=i;
+                }
+                cur[ind]=f->val;
             }
             r=!r;
             ans.push_back(cur);
