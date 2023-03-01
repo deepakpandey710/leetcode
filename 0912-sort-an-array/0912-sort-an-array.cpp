@@ -2,16 +2,16 @@ class Solution {
 public:
     void merge(int low,int mid,int high,vector<int>& nums){
         if(low>=high)return;
-        int l=low,r=mid+1,k=0;
+        int l=low,r=mid,k=0;
         vector<int>cur(high-low+1);
-        while(l<=mid && r<=high){
+        while(l<mid && r<=high){
             if(nums[l]<nums[r]){
                 cur[k++]=nums[l++];
             }
             else
                 cur[k++]=nums[r++];
         }
-        while(l<=mid){
+        while(l<mid){
             cur[k++]=nums[l++];
         }
         while(r<=high){
@@ -26,7 +26,7 @@ public:
             int mid=(low+high)/2;
             divide(low,mid,nums);
             divide(mid+1,high,nums);
-            merge(low,mid,high,nums);
+            merge(low,mid+1,high,nums);
         }
     }
     vector<int> sortArray(vector<int>& nums) {
