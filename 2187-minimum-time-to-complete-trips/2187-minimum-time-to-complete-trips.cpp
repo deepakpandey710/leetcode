@@ -10,7 +10,7 @@ public:
     }
     long long minimumTime(vector<int>& time, int totalTrips) {
         long long ans=0;
-        sort(time.begin(),time.end());
+        // sort(time.begin(),time.end());
         long long h=1e14;
         long long l=0;
         while(l<h){
