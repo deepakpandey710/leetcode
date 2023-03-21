@@ -6,7 +6,10 @@ public:
             if(it==0){
                 cnt++;
             }else{
-                ans+=(cnt*(cnt+1))/2;
+                if(cnt%2==0)
+                    ans+=(cnt/2)*(cnt+1);
+                else
+                    ans+=(cnt)*(cnt+1)/2;
                 cnt=0;
             }
         }
