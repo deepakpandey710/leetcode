@@ -23,18 +23,5 @@ public:
             ans+='/'+it;
         }
         return ans.size()?ans:"/";
-        // if(path[0]!='/'){
-        //     ans+='/';
-        //     i=0;
-        // }
-        // while(i<n){
-            // string cur="";
-            // while(i<n && path[i]!='/'){
-            //     cur+=path[i];
-            //     i++;
-            // }
-        //     if(cur=='.'||)
-        //     i++;
-        // }
     }
 };
