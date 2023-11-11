@@ -1,35 +1,31 @@
 class Graph {
 public:
     vector<vector<vector<int>>>adj;
-    vector<vector<int>>dist;
-    int m=0;
+    int n;
     Graph(int n, vector<vector<int>>& edges) {
         adj.resize(n);
         for(auto &it:edges){
             adj[it[0]].push_back({it[1],it[2]});
         }
-        m=n;
+        this->n=n;
     }
     
-    void addEdge(vector<int> edge) {
-        adj[edge[0]].push_back({edge[1],edge[2]});
+    void addEdge(vector<int> it) {
+        adj[it[0]].push_back({it[1],it[2]});
     }
     
     int shortestPath(int node1, int node2) {
-        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
-        vector<int>dist(m,INT_MAX);
+        priority_queue<vector<int>,vector<vector<int>>,greater<vector<int>>>pq;
+        vector<int>dist(n,INT_MAX);
         dist[node1]=0;
         pq.push({0,node1});
         while(!pq.empty()){
-            int d=pq.top().first;
-            int prev=pq.top().second;
+            auto t=pq.top();
             pq.pop();
-            for(auto &it:adj[prev]){
-                int next=it[0];
-                int nextd=it[1];
-                if(dist[next]>nextd+d){
-                    dist[next]=dist[prev]+nextd;
-                    pq.push({dist[next],next});
+            for(auto &it:adj[t[1]]){
+                if(dist[it[0]]>t[0]+it[1]){
+                    pq.push({t[0]+it[1],it[0]});
+                    dist[it[0]]=t[0]+it[1];
                 }
             }
         }
