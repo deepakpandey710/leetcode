@@ -6,17 +6,14 @@ public:
         for(int i=1;i<=n;i++){
             int j=i;
             while(j){
-                if(j%2==0){
-                    twos++;
-                    j/=2;
-                }else if(j%5==0){
+                if(j%5==0){
                     fives++;
                     j/=5;
                 }else 
                     break;
             }
         }
-        return min(twos,fives);
+        return fives;
     }
     
 };
