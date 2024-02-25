@@ -17,7 +17,7 @@ public:
                     break;
                 }
             }
-            reverse(nums.begin()+i+1,nums.end());
+            sort(nums.begin()+i+1,nums.end());
         }
     }
 };
