@@ -7,7 +7,7 @@ public:
             while(l<j && s[i]==s[l]){
                 l++;
             }
-            while(i<m && s[j]==s[m]){
+            while(l<m && s[j]==s[m]){
                 m--;
             }
             if(s[i]==s[j]){
