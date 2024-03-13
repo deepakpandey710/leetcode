@@ -11,26 +11,28 @@
 class Solution {
 public:
     ListNode* removeZeroSumSublists(ListNode* head) {
-         ListNode* dummy = new ListNode(0), *cur = dummy;
-        dummy->next = head;
-        int prefix = 0;
-        map<int, ListNode*> m;
-        while (cur) {
-            prefix += cur->val;
-            if (m.count(prefix)) {
-                cur =  m[prefix]->next;
-                int p = prefix + cur->val;
-                while (p != prefix) {
-                    m.erase(p);
-                    cur = cur->next;
-                    p += cur->val;
+        ListNode *dummy = new ListNode(0);
+        dummy->next=head;
+        ListNode* cur=dummy;
+        int prefix=0;
+        map<int,ListNode*>mpp;
+        while(cur){
+            prefix+=cur->val;
+            if(mpp.count(prefix)){
+                cur=mpp[prefix]->next;
+                int p=prefix+cur->val;
+                while(p!=prefix){
+                    mpp.erase(p);
+                    cur=cur->next;
+                    p+=cur->val;
                 }
-                m[prefix]->next = cur->next;
-            } else {
-                m[prefix] = cur;
+                mpp[prefix]->next=cur->next;
+            }else{
+                mpp[prefix]=cur;
             }
-            cur = cur->next;
+            cur=cur->next;
         }
         return dummy->next;
     }
+    
 };
