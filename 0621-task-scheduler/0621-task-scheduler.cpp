@@ -6,8 +6,8 @@ public:
             d[ch-'A']++;
         }
         sort(d.begin(),d.end());
-        int ans=(d[25]-1)*n+d[25];
         int k=(d[25]-1)*n;
+        int ans=k+d[25];
         for(int i=24;i>=0;i--){
             if(d[i]==d[25]){
                 ans++;
