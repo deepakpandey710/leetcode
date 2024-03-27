@@ -13,7 +13,6 @@ public:
             if(p<k){
                 ans+=cnt;
             }
-            cout<<ans<<" "<<cnt<<endl;
             i++;
         }
         return ans;
