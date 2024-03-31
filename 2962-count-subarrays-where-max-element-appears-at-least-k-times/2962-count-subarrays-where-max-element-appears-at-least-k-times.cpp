@@ -1,15 +1,16 @@
 class Solution {
 public:
-    long long countSubarrays(vector<int>& A, int k) {
-        int a = *max_element(A.begin(), A.end()), n = A.size(), cur = 0, i = 0;
-        long long res = 0;
-        for (int j = 0; j < n; ++j) {
-            cur += A[j] == a;
-            while (cur >= k)
-                cur -= A[i++] == a;
-            cout<<i<<endl;
-            res += i;
+    long long countSubarrays(vector<int>& nums, int k) {
+        int mx=0,cnt=0,n=nums.size(), i=0;
+        long long ans=0;
+        for(auto &it:nums)mx=max(mx,it);
+        for(int j=0;j<n;j++){
+            if(nums[j]==mx)cnt++;
+            while(cnt>=k){
+                if(nums[i++]==mx)cnt--;
+            }
+            ans+=i;
         }
-        return res;
+        return ans;
     }
 };
