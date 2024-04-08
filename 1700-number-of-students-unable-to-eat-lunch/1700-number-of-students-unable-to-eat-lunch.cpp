@@ -1,7 +1,7 @@
 class Solution {
 public:
     int countStudents(vector<int>& st, vector<int>& sw) {
-        int i=0,j=0,n=st.size();
+        int i=0,j=0,n=st.size();   // i count of square students, j count of circle students
         for(auto &it:st){
             if(it==1)i++;
             else j++;
