@@ -11,19 +11,19 @@
  */
 class Solution {
 public:
-    int ans=0,cur=0;
-    int sumNumbers(TreeNode* root) {
-        if(!root)return 0;
-        if(!root->left&&!root->right){
-            
-            ans+=cur*10+root->val;
+    int ans=0;
+    int sumNumbers(TreeNode* root,string res="") {
+        if(!root)return ans;
+        if(!root->left && !root->right){
+            res+=to_string(root->val);
+            ans+=stoi(res);
             return ans;
         }
-        cur=cur*10+root->val;
-        int x=sumNumbers(root->left);
-        
-        int y=sumNumbers(root->right);
-        cur/=10;
+        res=res+to_string(root->val);
+        int x =sumNumbers(root->left,res);
+        int y =sumNumbers(root->right,res);
+        // res.pop_back();
         return ans;
+        
     }
 };
